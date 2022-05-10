@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitproducer
+spec:
+  selector:
+    matchLabels:
+      app: rabbitproducer
+  template:
+    metadata:
+      labels:
+        app: rabbitproducer
+    spec:
+      containers:
+      - name: rabbitproducer
+      image: den86/rabbitproducer:1.0.0
+      env:
+      - name: RABBITMQ_HOST
+        value: "rabbitmq"
+      - name: RABBITMQ_PORT
+        value: "5672"
